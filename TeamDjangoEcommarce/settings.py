@@ -1,6 +1,19 @@
 from pathlib import Path
 import os
-from config import Keys, database_config
+from config import Keys, database_config, email_verification
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
+    "ALGORITHM": "HS256",
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
+    "TOKEN_TYPE_CLAIM": "token_type",
+    "JTI_CLAIM": "jti",
+}
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -96,3 +109,29 @@ STATIC_URL = 'static/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+INSTALLED_APPS += [
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+AUTH_USER_MODEL = 'AuthenticationApp.CustomUser'
+AUTHENTICATION_BACKENDS = [
+    'AuthenticationApp.backends.EmailBackend',  # Custom backend
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Use your email provider's SMTP server
+EMAIL_PORT = 587  # Common port for TLS
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = email_verification.get('email')
+# Use an app-specific password if using Gmail
+EMAIL_HOST_PASSWORD = email_verification.get('app_pass')

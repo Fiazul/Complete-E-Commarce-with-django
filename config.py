@@ -9,3 +9,7 @@ database_config = {
     'host': 'localhost',
     'port': '5432',
 }
+email_verification = {
+    'email': 'fiazulhaque90@gmail.com',
+    'app_pass': 'yipg bzgt qzvh dkab'
+}

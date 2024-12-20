@@ -1,0 +1,46 @@
+### Register a New User
+POST http://127.0.0.1:8000/auth/register/
+Content-Type: application/json
+
+{
+    "username": "soral",
+    "email": "soral11045@mowline.com",
+    "password": "1234"
+}
+
+###
+
+### Login with Credentials
+POST http://127.0.0.1:8000/auth/login/
+Content-Type: application/json
+
+{
+    "email": "soral11045@mowline.com",
+    "password": "1234"
+}
+
+###
+
+### Access User Profile
+GET http://127.0.0.1:8000/auth/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzAxMTgwLCJpYXQiOjE3MzQ3MDA4ODAsImp0aSI6ImI0NWEzYTdiMWNiNDQ2MDM5ZGZlZmJjZmU3YTY5YjdhIiwidXNlcl9pZCI6MTF9.3LEl4aq259tSW8lEVQsnTc4KmLvJepwAYJnwIKgF1oY
+###
+
+### Invalid Login Attempt
+POST http://127.0.0.1:8000/auth/login/
+Content-Type: application/json
+
+{
+    "email": "wronguser@example.com",
+    "password": "WrongPassword123"
+}
+
+### Logout
+POST http://127.0.0.1:8000/auth/logout/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NjI0NDI5LCJpYXQiOjE3MzQ2MjQxMjksImp0aSI6IjdlYjU5MGVkZDUyOTQxYWI5NDliNzI4OGZjMTQyNDQ2IiwidXNlcl9pZCI6NH0.iE60Lrl8TzRiEyPl61vtN0_r3Lz2wUFzfOmfGUWcHbY
+
+{
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNDcxMDM2NCwiaWF0IjoxNzM0NjIzOTY0LCJqdGkiOiI2NzNmODkxYzg2M2Y0MzkxODE2MjJhZGU4MmZmOWQ4NyIsInVzZXJfaWQiOjR9.CfPvC6NPqtPTH7WZdOHZ5lgkjjSBIrEQxouoTlrrzTI"
+}
+
