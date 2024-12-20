@@ -10,6 +10,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import RegisterSerializer, UserSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from rest_framework_simplejwt.tokens import AccessToken
 
 User = get_user_model()
 
@@ -104,6 +105,7 @@ class LogoutView(APIView):
 
         try:
             token = RefreshToken(refresh_token)
+
             token.blacklist()  # Blacklist token
             return Response({"message": "Logged out successfully"}, status=status.HTTP_200_OK)
         except Exception:
