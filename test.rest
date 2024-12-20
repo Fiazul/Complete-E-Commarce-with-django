@@ -16,14 +16,14 @@ Content-Type: application/json
 
 {
     "email": "soral11045@mowline.com",
-    "password": "1234"
+    "password": "11231111"
 }
 
 ###
 
 ### Access User Profile
 GET http://127.0.0.1:8000/auth/profile/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzAxOTI5LCJpYXQiOjE3MzQ3MDE2MjksImp0aSI6ImM5NmQ0NjcwMmUzYjQxMDNiNGE3MzkzZjE4MmM1MTk5IiwidXNlcl9pZCI6MTF9.gDJ3Wb0ujeSVjmoOySF_DXlO-4_hzVdnAV9gr0CGUiY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzI2MjczLCJpYXQiOjE3MzQ3MjU5NzMsImp0aSI6ImZmNGYxZmU0OGM3ZDQ0ZWI5OWYwY2Y5NjhkNDkyMmI5IiwidXNlcl9pZCI6MTF9.N5WgIATIEX91FObw4esjfnCOBtMMJELZf_uWD2n32CY
 
 ###
 
@@ -39,8 +39,35 @@ Content-Type: application/json
 ### Logout
 POST http://127.0.0.1:8000/auth/logout/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzAyNjU5LCJpYXQiOjE3MzQ3MDIzNTksImp0aSI6Ijc5MjU0ZjI0MTIyMzQ1MzhiOTUwZjNkYjljNTE5ZmRhIiwidXNlcl9pZCI6MTF9.2YiPk4VVdK6JIvTIkYU2DQ45Js8QsAZUhT1pxRag6uY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzAzNTUzLCJpYXQiOjE3MzQ3MDMyNTMsImp0aSI6IjJhNDJkMDMyM2JjYTRlNzBhOGRjODljNzkxZTQ2ZjJhIiwidXNlcl9pZCI6MTF9.Q6ofk-oV1tLJSSVvzfU4mqcgdeR3CW-s-ZnoxD8YIHc
+
 {
-    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNDc4ODc1OSwiaWF0IjoxNzM0NzAyMzU5LCJqdGkiOiIzYzNkN2MxOGU5ZDU0OGYxYTk3NWU2MjQ5MjY3ODk2YiIsInVzZXJfaWQiOjExfQ.kmmf9ob12FtqhDT7qgf4Vht--k5iEOcL-4lUBsb5YXs"
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNDc4OTY1MywiaWF0IjoxNzM0NzAzMjUzLCJqdGkiOiJjYTYyZTU5MWZkNGY0YTQxOGEyNTU4NjM3YzE4ZTlkOCIsInVzZXJfaWQiOjExfQ.uQe6TlTDjWgMAvieG4z_l331q_iwhL-b47wQtg8X0Nc"
 }
 
+### Step 1: Request OTP
+POST http://127.0.0.1:8000/auth/request-password-change/
+Content-Type: application/json
+
+{
+  "email": "soral11045@mowline.com"
+}
+
+### Step 2: Verify OTP
+POST http://127.0.0.1:8000/auth/verify-otp/
+Content-Type: application/json
+
+{
+  "email": "soral11045@mowline.com",
+  "otp": "723176"
+}
+
+### Step 3: Set New Password
+POST http://127.0.0.1:8000/auth/set-new-password/
+Content-Type: application/json
+
+{
+  "email": "soral11045@mowline.com",
+  "new_password": "11231111",
+  "confirm_password": "11231111"
+}

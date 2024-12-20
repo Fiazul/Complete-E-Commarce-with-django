@@ -1,3 +1,5 @@
+from django.core.mail import send_mail
+from django.utils import timezone
 from django.conf import settings
 from itsdangerous import URLSafeTimedSerializer
 from django.core.mail import EmailMessage
@@ -7,11 +9,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-from .serializers import RegisterSerializer, UserSerializer
+from .serializers import RegisterSerializer, UserSerializer, SetNewPasswordSerializer, VerifyOTPSerializer, RequestPasswordChangeSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
-from rest_framework_simplejwt.tokens import AccessToken
-
+from .models import OTP
+import random
 User = get_user_model()
 
 
@@ -129,3 +131,68 @@ class VerifyEmailView(APIView):
             except User.DoesNotExist:
                 return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
         return Response({"error": "Invalid or expired token"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class RequestPasswordChangeView(APIView):
+    def post(self, request):
+        serializer = RequestPasswordChangeSerializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data['email']
+            user = User.objects.get(email=email)
+            otp_code = otp = str(random.randint(100000, 999999))
+
+            # Generate and save OTP
+            # Replace with random OTP logic
+            otp = OTP.objects.create(user=user, code=otp_code)
+
+            # Send OTP via email
+            send_mail(
+                'Password Reset OTP',
+                f'Your OTP is {otp.code}. It expires in 2 minutes.',
+                'from@example.com',
+                [email],
+                fail_silently=False,
+            )
+
+            return Response({"message": "OTP sent to your email."}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class VerifyOTPView(APIView):
+    def post(self, request):
+        serializer = VerifyOTPSerializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data['email']
+            otp_code = serializer.validated_data['otp']
+
+            user = User.objects.filter(email=email).first()
+            otp_entry = OTP.objects.filter(user=user, code=otp_code).first()
+
+            if not otp_entry or not otp_entry.is_valid():
+                return Response({"error": "Invalid or expired OTP."}, status=status.HTTP_400_BAD_REQUEST)
+
+            otp_entry.is_email_verified = True
+            otp_entry.save()
+
+            return Response({"message": "OTP verified successfully."}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class SetNewPasswordView(APIView):
+    def post(self, request):
+        serializer = SetNewPasswordSerializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data['email']
+            new_password = serializer.validated_data['new_password']
+
+            user = User.objects.get(email=email)
+
+            otp_entry = OTP.objects.filter(user=user).last()
+            if not otp_entry or not otp_entry.is_email_verified:
+                return Response({"error": "Please verify your email before changing the password."}, status=status.HTTP_403_FORBIDDEN)
+
+            user.set_password(new_password)
+            user.save()
+
+            return Response({"message": "Password changed successfully."}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
