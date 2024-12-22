@@ -1,73 +1,108 @@
-### Register a New User
+# Register a new user
 POST http://127.0.0.1:8000/auth/register/
 Content-Type: application/json
 
 {
-    "username": "soral",
-    "email": "soral11045@mowline.com",
-    "password": "1234"
+  "username": "testuser",
+  "email": "testuser@example.com",
+  "password": "testpassword123"
 }
 
-###
+### 
 
-### Login with Credentials
+# Verify email with token
+GET http://127.0.0.1:8000/auth/verify-email/?token=<paste_your_token_here>
+
+### 
+
+# Login user
 POST http://127.0.0.1:8000/auth/login/
 Content-Type: application/json
 
 {
-    "email": "soral11045@mowline.com",
-    "password": "11231111"
+  "email": "testuser@example.com",
+  "password": "testpassword123"
 }
 
-###
+### 
 
-### Access User Profile
+# Get user profile (authApp)
 GET http://127.0.0.1:8000/auth/profile/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzI2MjczLCJpYXQiOjE3MzQ3MjU5NzMsImp0aSI6ImZmNGYxZmU0OGM3ZDQ0ZWI5OWYwY2Y5NjhkNDkyMmI5IiwidXNlcl9pZCI6MTF9.N5WgIATIEX91FObw4esjfnCOBtMMJELZf_uWD2n32CY
+Authorization: Bearer <paste_your_access_token_here>
 
-###
+### 
 
-### Invalid Login Attempt
-POST http://127.0.0.1:8000/auth/login/
-Content-Type: application/json
-
-{
-    "email": "wronguser@example.com",
-    "password": "WrongPassword123"
-}
-
-### Logout
+# Logout user
 POST http://127.0.0.1:8000/auth/logout/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NzAzNTUzLCJpYXQiOjE3MzQ3MDMyNTMsImp0aSI6IjJhNDJkMDMyM2JjYTRlNzBhOGRjODljNzkxZTQ2ZjJhIiwidXNlcl9pZCI6MTF9.Q6ofk-oV1tLJSSVvzfU4mqcgdeR3CW-s-ZnoxD8YIHc
+Authorization: Bearer <paste_your_access_token_here>
 
 {
-    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNDc4OTY1MywiaWF0IjoxNzM0NzAzMjUzLCJqdGkiOiJjYTYyZTU5MWZkNGY0YTQxOGEyNTU4NjM3YzE4ZTlkOCIsInVzZXJfaWQiOjExfQ.uQe6TlTDjWgMAvieG4z_l331q_iwhL-b47wQtg8X0Nc"
+  "refresh_token": "<paste_your_refresh_token_here>"
 }
 
-### Step 1: Request OTP
+### 
+
+# Request password reset
 POST http://127.0.0.1:8000/auth/request-password-change/
 Content-Type: application/json
 
 {
-  "email": "soral11045@mowline.com"
+  "email": "testuser@example.com"
 }
 
-### Step 2: Verify OTP
+### 
+
+# Verify OTP
 POST http://127.0.0.1:8000/auth/verify-otp/
 Content-Type: application/json
 
 {
-  "email": "soral11045@mowline.com",
-  "otp": "723176"
+  "email": "testuser@example.com",
+  "otp": "123456"
 }
 
-### Step 3: Set New Password
+### 
+
+# Set new password
 POST http://127.0.0.1:8000/auth/set-new-password/
 Content-Type: application/json
 
 {
-  "email": "soral11045@mowline.com",
-  "new_password": "11231111",
-  "confirm_password": "11231111"
+  "email": "testuser@example.com",
+  "new_password": "newpassword123",
+  "confirm_password": "newpassword123"
+}
+
+### 
+
+# Get profile (profileApp)
+GET http://127.0.0.1:8000/profile/
+Authorization: Bearer <paste_your_access_token_here>
+
+### 
+
+# Update profile (profileApp)
+PATCH http://127.0.0.1:8000/profile/
+Authorization: Bearer <paste_your_access_token_here>
+Content-Type: multipart/form-data
+
+{
+  "bio": "Updated bio",
+  "phone": "+1234567890",
+  "address": "123 Street, City",
+  "profile_picture": "<file_path>",
+  "date_of_birth": "2000-01-01",
+  "website": "http://example.com"
+}
+
+### 
+
+# Update seller status
+PATCH http://127.0.0.1:8000/profile/seller-status/
+Authorization: Bearer <paste_your_access_token_here>
+Content-Type: application/json
+
+{
+  "is_seller": true
 }

@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "AuthenticationApp",
-    "ProductApp"
+    "ProductApp",
+    'ProfileApp'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,11 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = email_verification.get('email')
 # Use an app-specific password if using Gmail
 EMAIL_HOST_PASSWORD = email_verification.get('app_pass')
+# filepath: /d:/Complete-E-Commarce-with-django/settings.py
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Ensure you have the following settings for static files as well
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

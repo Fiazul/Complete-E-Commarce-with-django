@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.conf import settings
 from itsdangerous import URLSafeTimedSerializer
 from django.core.mail import EmailMessage
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated  # type: ignore
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -80,7 +80,7 @@ class LoginView(APIView):
             return Response({"error": "Invalid email or password"}, status=status.HTTP_401_UNAUTHORIZED)
 
         if not user.is_verified:
-            return Response({"error": "Email not verified"}, status=status.HTTP_403_FORBIDDEN)
+            return Response({"error": "Email not verified. Please Verify your email"}, status=status.HTTP_403_FORBIDDEN)
 
         refresh = RefreshToken.for_user(user)
         return Response(
@@ -134,6 +134,8 @@ class VerifyEmailView(APIView):
 
 
 class RequestPasswordChangeView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
         serializer = RequestPasswordChangeSerializer(data=request.data)
         if serializer.is_valid():
