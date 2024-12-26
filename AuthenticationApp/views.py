@@ -134,7 +134,6 @@ class VerifyEmailView(APIView):
 
 
 class RequestPasswordChangeView(APIView):
-    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         serializer = RequestPasswordChangeSerializer(data=request.data)

@@ -1,0 +1,28 @@
+# Get the product list
+GET http://localhost:8000/product/products/
+###
+# Get details for a specific product
+GET http://localhost:8000/product/products/1/
+###
+
+# Add a new product
+POST http://localhost:8000/product/products/add/
+Content-Type: multipart/form-data
+name=New Product
+description=Description of the new product
+price=100.0
+stock=50
+is_active=true
+product_image=@path/to/image.jpg
+
+###
+# Add a new product with an image
+POST http://localhost:8000/product/products/add/
+Content-Type: multipart/form-data
+
+name=New Product
+description=Description
+price=100.0
+stock=50
+is_active=true
+product_image=@C:\path\to\image.png

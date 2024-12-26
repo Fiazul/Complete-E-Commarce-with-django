@@ -1,0 +1,12 @@
+AuthenticationApp
+ProductApp
+ProfileApp
+OrderApp
+TransactionApp
+CategoryApp
+CartApp
+ReviewApp
+WishlistApp
+NotificationApp
+ShippingApp
+AnalyticsApp

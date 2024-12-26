@@ -23,6 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('AuthenticationApp.urls')),
     path('profile/', include('ProfileApp.urls')),
+    path('product/', include('ProductApp.urls')),
+
 
 ]
 # filepath: /d:/Complete-E-Commarce-with-django/urls.py
