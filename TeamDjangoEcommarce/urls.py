@@ -24,10 +24,11 @@ urlpatterns = [
     path('auth/', include('AuthenticationApp.urls')),
     path('profile/', include('ProfileApp.urls')),
     path('product/', include('ProductApp.urls')),
+    path('cart/', include('CartApp.urls')),
 
 
 ]
-# filepath: /d:/Complete-E-Commarce-with-django/urls.py
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

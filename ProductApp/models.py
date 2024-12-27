@@ -44,32 +44,3 @@ class ProductVariation(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - {self.variation_name}: {self.variation_value}"
-
-
-User = get_user_model()
-
-
-def set_default_seller_user(apps, schema_editor):
-    Product = apps.get_model('ProductApp', 'Product')
-    default_user = User.objects.first()
-    for product in Product.objects.all():
-        product.seller_user = default_user
-        product.save()
-
-
-class Migration(migrations.Migration):
-
-    dependencies = [
-        ('ProductApp', '0001_initial'),
-    ]
-
-    operations = [
-        migrations.AddField(
-            model_name='product',
-            name='seller_user',
-            field=models.ForeignKey(
-                default=1, on_delete=django.db.models.deletion.CASCADE, related_name='products', to=User),
-            preserve_default=False,
-        ),
-        migrations.RunPython(set_default_seller_user),
-    ]

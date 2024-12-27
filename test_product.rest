@@ -1,28 +1,78 @@
-# Get the product list
-GET http://localhost:8000/product/products/
-###
-# Get details for a specific product
-GET http://localhost:8000/product/products/1/
+### Get Product List
+GET http://localhost:8000/products/
 ###
 
-# Add a new product
-POST http://localhost:8000/product/products/add/
+### Get Product Details
+GET http://localhost:8000/products/1/
+###
+
+### Create Product
+POST http://localhost:8000/products/
 Content-Type: multipart/form-data
-name=New Product
-description=Description of the new product
-price=100.0
-stock=50
-is_active=true
-product_image=@path/to/image.jpg
+Authorization: Bearer <your_access_token>
 
+--boundary
+Content-Disposition: form-data; name="name"
+
+New Product
+--boundary
+Content-Disposition: form-data; name="description"
+
+This is a new product.
+--boundary
+Content-Disposition: form-data; name="price"
+
+99.99
+--boundary
+Content-Disposition: form-data; name="stock"
+
+10
+--boundary
+Content-Disposition: form-data; name="is_active"
+
+true
+--boundary
+Content-Disposition: form-data; name="product_image"; filename="product.jpg"
+Content-Type: image/jpeg
+
+< ./path/to/your/product.jpg
+--boundary--
 ###
-# Add a new product with an image
-POST http://localhost:8000/product/products/add/
-Content-Type: multipart/form-data
 
-name=New Product
-description=Description
-price=100.0
-stock=50
-is_active=true
-product_image=@C:\path\to\image.png
+### Update Product
+PATCH http://localhost:8000/products/1/
+Content-Type: multipart/form-data
+Authorization: Bearer <your_access_token>
+
+--boundary
+Content-Disposition: form-data; name="name"
+
+Updated Product
+--boundary
+Content-Disposition: form-data; name="description"
+
+This is an updated product.
+--boundary
+Content-Disposition: form-data; name="price"
+
+89.99
+--boundary
+Content-Disposition: form-data; name="stock"
+
+15
+--boundary
+Content-Disposition: form-data; name="is_active"
+
+true
+--boundary
+Content-Disposition: form-data; name="product_image"; filename="updated_product.jpg"
+Content-Type: image/jpeg
+
+< ./path/to/your/updated_product.jpg
+--boundary--
+###
+
+### Delete Product
+DELETE http://localhost:8000/products/1/
+Authorization: Bearer <your_access_token>
+###
