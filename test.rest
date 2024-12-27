@@ -3,9 +3,9 @@ POST http://127.0.0.1:8000/auth/register/
 Content-Type: application/json
 
 {
-  "username": "testuser",
-  "email": "testuser@example.com",
-  "password": "testpassword123"
+  "username": "caje",
+  "email": "cajekif266@chosenx.com",
+  "password": "1234"
 }
 
 ### 
@@ -20,8 +20,8 @@ POST http://127.0.0.1:8000/auth/login/
 Content-Type: application/json
 
 {
-  "email": "testuser@example.com",
-  "password": "testpassword123"
+  "email": "cajekif266@chosenx.com",
+  "password": "1234"
 }
 
 ### 
@@ -78,7 +78,7 @@ Content-Type: application/json
 
 # Get profile (profileApp)
 GET http://127.0.0.1:8000/profile/
-Authorization: Bearer <paste_your_access_token_here>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MTQ3MDAyLCJpYXQiOjE3MzUxNDY3MDIsImp0aSI6IjM5MjI4ZTU5M2VkYzQ0Yjg4ZGRiNWIxNjllOTg3MGM0IiwidXNlcl9pZCI6MTZ9.BZTEm7jmhK-2aLYP9mb4UKl8jLNCmbbRs-XPtdE48jo
 
 ### 
 
@@ -91,7 +91,7 @@ Content-Type: multipart/form-data
   "bio": "Updated bio",
   "phone": "+1234567890",
   "address": "123 Street, City",
-  "profile_picture": "<file_path>",
+  "profile_picture": "C:\Users\Fiazul\Downloads\dp.jpg",
   "date_of_birth": "2000-01-01",
   "website": "http://example.com"
 }

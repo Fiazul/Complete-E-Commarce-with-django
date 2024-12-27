@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "AuthenticationApp",
     "ProductApp",
-    'ProfileApp'
+    'ProfileApp',
+    "CartApp"
 ]
 
 MIDDLEWARE = [
@@ -131,17 +132,20 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Use your email provider's SMTP server
-EMAIL_PORT = 587  # Common port for TLS
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = email_verification.get('email')
-# Use an app-specific password if using Gmail
+
 EMAIL_HOST_PASSWORD = email_verification.get('app_pass')
-# filepath: /d:/Complete-E-Commarce-with-django/settings.py
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Ensure you have the following settings for static files as well
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles')
+]
