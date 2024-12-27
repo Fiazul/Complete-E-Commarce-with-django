@@ -1,6 +1,7 @@
 # E-Commerce Project
 
 ## Overview
+
 This is a scalable and modular e-commerce project built using Django. The project is designed to handle various functionalities such as user authentication, profile management, product catalog, categories, cart, and order processing. It is built with dynamic database capabilities to ensure seamless scalability and future integration of advanced features like machine learning models and APIs.
 
 ---
@@ -8,77 +9,108 @@ This is a scalable and modular e-commerce project built using Django. The projec
 ## Features
 
 ### 1. AuthenticationApp
+
 - User registration and login.
-- Email-based authentication.
+- Email-based MFA .
 - OTP verification for additional security.
 - Custom user model (`CustomUser`) with fields for email and verification status.
 
 ### 2. ProfileApp
+
 - One-to-one relationship with users.
 - Fields for profile details like bio, phone, address, and profile picture.
 - Support for seller identification using `is_seller` flag.
 
 ### 3. ProductApp
+
 - Dynamic product management.
 - Product variations (e.g., size, color) with price adjustments.
 - Product image uploads and stock tracking.
 
 ### 4. CategoryApp
+
 - Hierarchical category structure for product organization.
 - Ability to associate products with multiple categories.
 - Support for users to follow categories.
 
 ### 5. OrderApp
+
 - Order creation and management.
 - Tracks the relationship between users and their orders.
 - Supports order status updates (e.g., pending, completed).
 
 ### 6. CartApp
+
 - Manages user-specific cart items.
 - Tracks product quantities and prices in the cart.
 - Allows adding, updating, and removing items.
-
 
 ---
 
 ## Installation
 
 ### Prerequisites
+
 - Python (>= 3.8)
 - Django (>= 4.0)
-- PostgreSQL 
+- PostgreSQL (recommended for production)
 
 ### Setup
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd <repository-name>
    ```
 
 2. Create a virtual environment and activate it:
+
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. Install dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Configure the database:
-   - Update `DATABASES` in `settings.py` to point to your PostgreSQL database.
+4. Configure the database and email settings using a `config.py` file:
+
+   **config.py**
+   ```python
+   Keys = {
+       "SECRET_KEY": "your secret key",
+   }
+
+   database_config = {
+       "name": 'your database name',
+       "user": 'postgres',
+       "password": "your password",
+       "host": 'localhost',
+       "port": '5432',
+   }
+
+   email_verification = {
+       'email': 'your email',
+       'app_pass': 'your-app-password',
+   }
+   ```
+
+   Update `settings.py` to import and use `config.py` values.
 
 5. Run migrations:
+
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
 
+6. Start the development server:
 
-7. Start the development server:
    ```bash
    python manage.py runserver
    ```
@@ -88,15 +120,18 @@ This is a scalable and modular e-commerce project built using Django. The projec
 ## API Endpoints
 
 ### Authentication
+
 - **Register User:** `POST /auth/register/`
 - **Login User:** `POST /auth/login/`
 - **Verify OTP:** `POST /auth/verify/`
 
 ### Profile
+
 - **Retrieve Profile:** `GET /profile/`
 - **Update Profile:** `PATCH /profile/`
 
 ### Products
+
 - **List Products:** `GET /products/`
 - **Retrieve Product Details:** `GET /products/<product_id>/`
 - **Add Product (Admin):** `POST /products/`
@@ -104,6 +139,7 @@ This is a scalable and modular e-commerce project built using Django. The projec
 - **Delete Product (Admin):** `DELETE /products/<product_id>/`
 
 ### Categories
+
 - **List Categories:** `GET /categories/`
 - **Retrieve Category Details:** `GET /categories/<category_id>/`
 - **Add Category (Admin):** `POST /categories/`
@@ -111,12 +147,14 @@ This is a scalable and modular e-commerce project built using Django. The projec
 - **Delete Category (Admin):** `DELETE /categories/<category_id>/`
 
 ### Cart
+
 - **Retrieve Cart:** `GET /cart/`
 - **Add to Cart:** `POST /cart/`
 - **Update Cart Item:** `PATCH /cart/item/<item_id>/`
 - **Remove Cart Item:** `DELETE /cart/item/<item_id>/`
 
 ### Orders
+
 - **List Orders:** `GET /orders/`
 - **Retrieve Order Details:** `GET /orders/<order_id>/`
 - **Create Order:** `POST /orders/`
@@ -124,6 +162,7 @@ This is a scalable and modular e-commerce project built using Django. The projec
 ---
 
 ## Project Structure
+
 ```plaintext
 project/
 ├── AuthenticationApp/
@@ -138,6 +177,7 @@ project/
 ├── OrderApp/
 ├── templates/
 ├── static/
+├── config.py
 ├── manage.py
 └── requirements.txt
 ```
@@ -147,11 +187,13 @@ project/
 ## Testing
 
 1. Use **Postman** for API testing.
-2. Authenticate using the `Authorization: Bearer <access token>` header.
+
+2. Authenticate using the `Authorization: Bearer <token>` header.
 
 ---
 
 ## Future Enhancements
+
 - **WishlistApp**: Allow users to save favorite items.
 - **ReviewApp**: Support user reviews and ratings for products.
 - **NotificationApp**: Notify users about order updates or promotional offers.
@@ -159,14 +201,10 @@ project/
 - **ShippingApp**: Manage shipping details and track shipments.
 - **Machine Learning Integration**: Use category and product data for advanced recommendation systems.
 
----
-
 
 
 ## Contributors
-- **Fiazul Haque** 
-- **Proshanto Bhakta** 
 
----
-
+- **Fiazul Haque**
+- **Proshanto Bhakta**
 
