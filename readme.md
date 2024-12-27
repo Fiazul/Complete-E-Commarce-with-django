@@ -38,6 +38,7 @@ This is a scalable and modular e-commerce project built using Django. The projec
 - Tracks product quantities and prices in the cart.
 - Allows adding, updating, and removing items.
 
+
 ---
 
 ## Installation
