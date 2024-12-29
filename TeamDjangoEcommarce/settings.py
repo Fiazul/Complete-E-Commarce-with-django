@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     "AuthenticationApp",
     "ProductApp",
     'ProfileApp',
-    "CartApp"
+    "CartApp",
+    "OrderApp"
 ]
 
 MIDDLEWARE = [
