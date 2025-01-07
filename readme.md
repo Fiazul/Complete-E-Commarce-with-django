@@ -125,6 +125,12 @@ This is a scalable and modular e-commerce project built using Django. The projec
 
 ## API Endpoints
 
+### SearchApp
+
+- **History:** `GET /search/history/`
+- **AI Search** `GET /search/ai-search/`
+- **Standard Search** `POST /search/search/`
+
 ### Authentication
 
 - **Register User:** `POST /auth/register/`
