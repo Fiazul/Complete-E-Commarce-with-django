@@ -7,6 +7,12 @@ This is a scalable and modular e-commerce project built using Django. The projec
 ---
 
 ## Features
+### 0. SearchApp
+
+- Standard Search
+- Ai search via prompt with GenAi
+- Search history will be saved for authorized users
+- GenAi will generate a keyword based on the prompt and the available products. and the system will execute a search operation
 
 ### 1. AuthenticationApp
 
@@ -118,6 +124,12 @@ This is a scalable and modular e-commerce project built using Django. The projec
 ---
 
 ## API Endpoints
+
+### SearchApp
+
+- **History:** `GET /search/history/`
+- **AI Search** `GET /search/ai-search/`
+- **Standard Search** `POST /search/search/`
 
 ### Authentication
 
