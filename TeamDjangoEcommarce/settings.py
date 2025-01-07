@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = Keys.get('SECRET_KEY')
-
+GEMINI_API_KEY = Keys.get('GEMINI_API_KEY')
 
 DEBUG = True
 
@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     "AuthenticationApp",
     "ProductApp",
     'ProfileApp',
-    "CartApp"
+    "CartApp",
+    "OrderApp",
+    "CategoryApp",
+    'SearchApp',
 ]
 
 MIDDLEWARE = [
