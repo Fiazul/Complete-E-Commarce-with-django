@@ -9,104 +9,591 @@
 		{
 			"name": "Registration",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Jajabor",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "amiallabin@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"register",
+						""
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Jajabor",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "amiallabin@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"disabled": true
+						}
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "login",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "amiallabin@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"login",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "view_login_info",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjIwNzc4LCJpYXQiOjE3MzUyMjA0NzgsImp0aSI6IjcwNmY3OTdlYmZmYjQ3MjE5NDE4ZDIxOGM4ODVkYWM2IiwidXNlcl9pZCI6MX0.2Awy1UZwDimUQCkpW_jzxIxdeqSOMx7r2bBmM3OEe5c",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/profile/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"profile",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "logout",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjIwNzc4LCJpYXQiOjE3MzUyMjA0NzgsImp0aSI6IjcwNmY3OTdlYmZmYjQ3MjE5NDE4ZDIxOGM4ODVkYWM2IiwidXNlcl9pZCI6MX0.2Awy1UZwDimUQCkpW_jzxIxdeqSOMx7r2bBmM3OEe5c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refresh_token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTMwNjk4NiwiaWF0IjoxNzM1MjIwNTg2LCJqdGkiOiJkOWI1NjQ5NDRiZTE0N2YyOWFhYTkyZDJkMzRhYzZjZiIsInVzZXJfaWQiOjF9.klDzS3zWs0c7DWjQPug5TI7yCgUP82BTLZqD_GstttY",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/logout/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"logout",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "request-password-change",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjIxMDM0LCJpYXQiOjE3MzUyMjA3MzQsImp0aSI6ImM5MTNiZTc3YTZiZjRiZjI5Y2UwYzZjZTY3MDAxMzMzIiwidXNlcl9pZCI6MX0.ojQyYJAU-bOv9vmCLzafMREDOZyu-b3RIioIKPs8BFI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "amiallabin@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/request-password-change/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"request-password-change",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "verify-otp",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "amiallabin@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "otp",
+							"value": "389683",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/auth/verify-otp/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"auth",
+						"verify-otp",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "get-profile",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI3NTg4LCJpYXQiOjE3MzUyMjE1ODgsImp0aSI6IjllZTUwZmY5ZDJiZTRkN2M4MTVmNmJiNGIwYjljOTA0IiwidXNlcl9pZCI6MX0.4S--9LjfSO94M5Jq5hicON8Tj32OjKQwX7Ku1J3t-Xc",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/profile/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"profile",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "patch-profile",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI3NTg4LCJpYXQiOjE3MzUyMjE1ODgsImp0aSI6IjllZTUwZmY5ZDJiZTRkN2M4MTVmNmJiNGIwYjljOTA0IiwidXNlcl9pZCI6MX0.4S--9LjfSO94M5Jq5hicON8Tj32OjKQwX7Ku1J3t-Xc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "bio",
+							"value": "bio diya ki korum. ganja khaiya kul pai na.",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "01964040025",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "shiyal bari 4 number road , lanol er majar",
+							"type": "text"
+						},
+						{
+							"key": "profile_picture",
+							"type": "file",
+							"src": "/C:/Users/Fiazul/OneDrive/Pictures/202332424716.png"
+						},
+						{
+							"key": "date_of_birth",
+							"value": "2000-01-01",
+							"type": "text"
+						},
+						{
+							"key": "website",
+							"value": "http://areyouvirgin.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/profile/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"profile",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "set-is-seller-true",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI3NTg4LCJpYXQiOjE3MzUyMjE1ODgsImp0aSI6IjllZTUwZmY5ZDJiZTRkN2M4MTVmNmJiNGIwYjljOTA0IiwidXNlcl9pZCI6MX0.4S--9LjfSO94M5Jq5hicON8Tj32OjKQwX7Ku1J3t-Xc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "is_seller",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/profile/update-seller-status/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"profile",
+						"update-seller-status",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MjY5OTkyLCJpYXQiOjE3MzYyNjM5OTIsImp0aSI6ImI3MGIzYjQyOWQxOTQxNDI4ODEwNDkwM2JlMmM5M2Y3IiwidXNlcl9pZCI6MX0.fgiBO2jvedBgyzTA3ojji45kyXgA9n5NkT90_4HXz9E",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/product/products/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"product",
+						"products",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "insert_product(post)",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MjY4MTkwLCJpYXQiOjE3MzYyNjIxOTAsImp0aSI6IjRkYmM4MWVkZDRjZTRlNWM4MTIzMTNlNGFhZGQ0ODVlIiwidXNlcl9pZCI6MX0.M8LP1RBmikBz_43Ef-YjSgAJMouDySPQFo_LSn15f9o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "product lumine",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "free sayu",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "99.99",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "is_active",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "category_name",
+							"value": "Smartphones",
+							"type": "text"
+						},
+						{
+							"key": "product_image",
+							"type": "file",
+							"src": "/C:/Users/Fiazul/OneDrive/Pictures/202332424716.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/product/products/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"product",
+						"products",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "update_product(patch)",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI3NTg4LCJpYXQiOjE3MzUyMjE1ODgsImp0aSI6IjllZTUwZmY5ZDJiZTRkN2M4MTVmNmJiNGIwYjljOTA0IiwidXNlcl9pZCI6MX0.4S--9LjfSO94M5Jq5hicON8Tj32OjKQwX7Ku1J3t-Xc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "is_active",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/product/products/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"product",
+						"products",
+						"1",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "variations",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI3NTg4LCJpYXQiOjE3MzUyMjE1ODgsImp0aSI6IjllZTUwZmY5ZDJiZTRkN2M4MTVmNmJiNGIwYjljOTA0IiwidXNlcl9pZCI6MX0.4S--9LjfSO94M5Jq5hicON8Tj32OjKQwX7Ku1J3t-Xc",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/product/products/1/variations/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"product",
+						"products",
+						"1",
+						"variations",
+						""
+					]
+				}
 			},
 			"response": []
 		},
@@ -114,47 +601,442 @@
 			"name": "variations_details",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/product/product-variations/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"product",
+						"product-variations",
+						"1",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "insert_variations_details(post)",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI3NTg4LCJpYXQiOjE3MzUyMjE1ODgsImp0aSI6IjllZTUwZmY5ZDJiZTRkN2M4MTVmNmJiNGIwYjljOTA0IiwidXNlcl9pZCI6MX0.4S--9LjfSO94M5Jq5hicON8Tj32OjKQwX7Ku1J3t-Xc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "variation_name",
+							"value": "size",
+							"type": "text"
+						},
+						{
+							"key": "variation_value",
+							"value": "large",
+							"type": "text"
+						},
+						{
+							"key": "additional_price",
+							"value": "9.99",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/product/products/1/variations/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"product",
+						"products",
+						"1",
+						"variations",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "update_variations_details(patch)",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI3NTg4LCJpYXQiOjE3MzUyMjE1ODgsImp0aSI6IjllZTUwZmY5ZDJiZTRkN2M4MTVmNmJiNGIwYjljOTA0IiwidXNlcl9pZCI6MX0.4S--9LjfSO94M5Jq5hicON8Tj32OjKQwX7Ku1J3t-Xc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "additional_price",
+							"value": "2.99",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/product/product-variations/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"product",
+						"product-variations",
+						"1",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "getCart",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzM2OTgyLCJpYXQiOjE3MzUzMzA5ODIsImp0aSI6ImQ5YjI1YzgyZmEwZDQwZmQ4OGY4OWMwZjg1NjFiMTQwIiwidXNlcl9pZCI6MX0.ip132lzmSq04WGBwyskyLMTA8ZOCBOKw7k6Ea-cYEuw",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/cart",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cart"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "postCart",
 			"request": {
-				"method": "GET",
-				"header": []
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzM2OTgyLCJpYXQiOjE3MzUzMzA5ODIsImp0aSI6ImQ5YjI1YzgyZmEwZDQwZmQ4OGY4OWMwZjg1NjFiMTQwIiwidXNlcl9pZCI6MX0.ip132lzmSq04WGBwyskyLMTA8ZOCBOKw7k6Ea-cYEuw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/cart/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cart",
+						""
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "UpdateCart",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzM2OTgyLCJpYXQiOjE3MzUzMzA5ODIsImp0aSI6ImQ5YjI1YzgyZmEwZDQwZmQ4OGY4OWMwZjg1NjFiMTQwIiwidXNlcl9pZCI6MX0.ip132lzmSq04WGBwyskyLMTA8ZOCBOKw7k6Ea-cYEuw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "quantity",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/cart/item/1/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"cart",
+						"item",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postOrder",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzQ1NTkxLCJpYXQiOjE3MzUzMzk1OTEsImp0aSI6IjE1YTU1NTgzOTQ2ODRlMjI4ZmYyMWJkZTIyODg0NWI1IiwidXNlcl9pZCI6MX0.UvhlhfcHzzY_eivrs2ch8y0Lctc_XTKMw9aXTTrBHiE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "shipping_address",
+							"value": "123 Main St, City",
+							"type": "text"
+						},
+						{
+							"key": "billing_address",
+							"value": "123 Main St, City",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/orders/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"orders",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDk5Nzg2LCJpYXQiOjE3MzYwOTM3ODYsImp0aSI6IjU4ZTdjOTE2YTkyYTQ4YTZhZWQyMDA1OGQ1NmYzMWY4IiwidXNlcl9pZCI6MX0.gxIr9vf283NKeHyQNMOJ4Ybs34sqSfneJWcdRaKsfBs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/category/categories/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"category",
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDk5Nzg2LCJpYXQiOjE3MzYwOTM3ODYsImp0aSI6IjU4ZTdjOTE2YTkyYTQ4YTZhZWQyMDA1OGQ1NmYzMWY4IiwidXNlcl9pZCI6MX0.gxIr9vf283NKeHyQNMOJ4Ybs34sqSfneJWcdRaKsfBs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/category/categories/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"category",
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2MDk5Nzg2LCJpYXQiOjE3MzYwOTM3ODYsImp0aSI6IjU4ZTdjOTE2YTkyYTQ4YTZhZWQyMDA1OGQ1NmYzMWY4IiwidXNlcl9pZCI6MX0.gxIr9vf283NKeHyQNMOJ4Ybs34sqSfneJWcdRaKsfBs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/category/categories/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"category",
+						"categories",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ai search",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/search/ai-search/?q=What should i give in my 14 years old nephews birthday. a phone can be since",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"search",
+						"ai-search",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "What should i give in my 14 years old nephews birthday. a phone can be since"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ai search",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/search/ai-search/?q=What should i give in my 14 years old nephews birthday. a phone can be since",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"search",
+						"ai-search",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "What should i give in my 14 years old nephews birthday. a phone can be since"
+						}
+					]
+				}
 			},
 			"response": []
 		}
